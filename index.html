@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convite – Lidiane &amp; Celio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #f5f0eb;
+      color: #2c2c2c;
+      min-height: 100vh;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .hero img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Card container ── */
+    .card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 0 0 48px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.10);
+    }
+
+    /* ── Ornament divider ── */
+    .ornament {
+      text-align: center;
+      color: #8a6e52;
+      font-size: 22px;
+      letter-spacing: 12px;
+      padding: 28px 0 0;
+    }
+
+    /* ── Section title ── */
+    .section {
+      text-align: center;
+      padding: 32px 24px 0;
+    }
+
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #a08060;
+      margin-bottom: 12px;
+    }
+
+    .section-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: #1a1a2e;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Details block ── */
+    .detail-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: #3a3a3a;
+      font-weight: 300;
+      line-height: 1.5;
+      text-align: left;
+      max-width: 340px;
+      width: 100%;
+    }
+
+    .detail-row .icon {
+      font-size: 17px;
+      min-width: 22px;
+      padding-top: 1px;
+    }
+
+    .detail-row strong {
+      font-weight: 400;
+      color: #1a1a2e;
+    }
+
+    /* ── Separator ── */
+    .separator {
+      max-width: 200px;
+      margin: 32px auto;
+      border: none;
+      border-top: 1px solid #e0d5c8;
+      position: relative;
+    }
+
+    .separator::after {
+      content: '♥';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 0 8px;
+      color: #c9a87c;
+      font-size: 14px;
+    }
+
+    /* ── Map button ── */
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: #1a1a2e;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background .2s;
+    }
+
+    .map-btn:hover { background: #2e2e50; }
+
+    .map-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ── Note ── */
+    .note {
+      margin: 32px 24px 0;
+      padding: 16px 20px;
+      background: #faf6f0;
+      border-left: 3px solid #c9a87c;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 300;
+      color: #5a5a5a;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 36px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: #b0966e;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 580px) {
+      .card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Foto do casal -->
+  <div class="hero">
+    <img src="foto-casal.jpg" alt="Lidiane e Celio" />
+  </div>
+
+  <!-- Ornamento -->
+  <div class="ornament">· · ·</div>
+
+  <!-- Cartório -->
+  <div class="section">
+    <div class="section-label">Cerimônia Civil</div>
+    <div class="section-icon">🏛️</div>
+    <h2 class="section-title">Cartório do Roça Grande</h2>
+
+    <div class="detail-block">
+      <div class="detail-row">
+        <span class="icon">📍</span>
+        <span>Rodovia da Uva, 1041</span>
+      </div>
+      <div class="detail-row">
+        <span class="icon">📅</span>
+        <span><strong>16 de julho</strong> &nbsp;às&nbsp; <strong>15h50</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="separator" />
+
+  <!-- Jantar -->
+  <div class="section">
+    <div class="section-label">Jantar de Celebração</div>
+    <div class="section-icon">🥂</div>
+    <h2 class="section-title">Churrascaria Berckemback</h2>
+
+    <div class="detail-block">
+      <div class="detail-row">
+        <span class="icon">📅</span>
+        <span><strong>24 de julho</strong> &nbsp;às&nbsp; <strong>19h30</strong></span>
+      </div>
+      <div class="detail-row">
+        <span class="icon">📍</span>
+        <span>Estrada da Ribeira, 1480</span>
+      </div>
+    </div>
+
+    <a
+      class="map-btn"
+      href="https://share.google/pwV86U1htMlDi0vOH"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+      </svg>
+      Como chegar
+    </a>
+  </div>
+
+  <!-- Nota -->
+  <div class="note">
+    ✨ Cada convidado ficará responsável pelo seu consumo individual
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    Com amor, Lidiane &amp; Celio
+  </div>
+
+</div>
+
+</body>
+</html>

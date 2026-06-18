@@ -186,6 +186,97 @@
       color: #a07850;
     }
 
+    /* ── Preço ── */
+    .preco-box {
+      background: #1a1a2e;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .preco-box .preco-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .preco-box .preco-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .preco-box .preco-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a87c;
+    }
+
+    .preco-box .preco-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: #f0ece6;
+      line-height: 1.5;
+    }
+
+    .preco-box .preco-valor {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Crianças ── */
+    .criancas-box {
+      background: #faf6f0;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .criancas-box .criancas-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a07850;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .criancas-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .criancas-box ul li {
+      font-size: 14px;
+      font-weight: 300;
+      color: #3a3a3a;
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .criancas-box ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #c9a87c;
+      font-weight: 700;
+    }
+
+    .criancas-box ul li strong { font-weight: 700; color: #1a1a2e; }
+
     /* ── Nota ── */
     .note {
       padding: 14px 16px;
@@ -347,6 +438,26 @@
         Abrir no Google Maps
       </span>
     </a>
+
+    <!-- Preço -->
+    <div class="preco-box">
+      <div class="preco-icon">🥩</div>
+      <div class="preco-info">
+        <span class="preco-label">Segunda a Sexta</span>
+        <span class="preco-desc">Rodízio com refrigerante, água e limonada à vontade</span>
+        <span class="preco-valor">R$ 74,00 / pessoa</span>
+      </div>
+    </div>
+
+    <!-- Crianças -->
+    <div class="criancas-box">
+      <div class="criancas-title">👶 Crianças</div>
+      <ul>
+        <li><strong>0 a 4 anos:</strong> não pagam, se não houver desperdício</li>
+        <li><strong>5 a 8 anos:</strong> pagam ½ (meia) refeição</li>
+        <li><strong>9 anos ou mais:</strong> pagam 1 refeição inteira</li>
+      </ul>
+    </div>
 
     <!-- Nota de consumo -->
     <div class="note">

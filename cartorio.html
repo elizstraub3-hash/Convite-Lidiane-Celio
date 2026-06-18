@@ -329,6 +329,23 @@
     .mbar-play:active { background: #b8956a; transform: scale(.93); }
     button.mbar-play { border: none; cursor: pointer; }
 
+    /* ── Corações flutuantes ── */
+    @keyframes heartRise {
+      0%   { transform: translateY(0) scale(1) rotate(-8deg); opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 0.5; }
+      100% { transform: translateY(-88vh) scale(0.25) rotate(12deg); opacity: 0; }
+    }
+
+    .heart-float {
+      position: fixed;
+      bottom: 96px;
+      z-index: 997;
+      pointer-events: none;
+      user-select: none;
+      animation: heartRise linear forwards;
+    }
+
     @media (max-width: 480px) {
       .card { box-shadow: none; min-height: 100svh; }
     }
@@ -440,6 +457,26 @@
   </div>
   <button class="mbar-play" id="playBtn" onclick="togglePlay()" aria-label="Tocar / Pausar">▶</button>
 </div>
+
+<script>
+/* ── Corações flutuantes ── */
+(function(){
+  var cores = ['#ff9ebc','#ffb3c1','#ff6fa3','#e8a0bf','#ffd6e0','#c9a87c','#ff85a1'];
+  function spawn() {
+    var h = document.createElement('span');
+    h.textContent = '♥';
+    var size = (Math.random() * 20 + 10).toFixed(0);
+    var left = (Math.random() * 86 + 7).toFixed(1);
+    var dur  = (Math.random() * 4 + 4).toFixed(1);
+    h.className = 'heart-float';
+    h.style.cssText = 'left:'+left+'vw;font-size:'+size+'px;color:'+cores[Math.floor(Math.random()*cores.length)]+';animation-duration:'+dur+'s';
+    document.body.appendChild(h);
+    setTimeout(function(){ if(h.parentNode) h.parentNode.removeChild(h); }, +dur*1000+400);
+  }
+  spawn(); setTimeout(spawn,300); setTimeout(spawn,600);
+  setInterval(spawn, 750);
+})();
+</script>
 
 <script>
 (function(){

@@ -39,7 +39,7 @@
     /* ── Conteúdo – sobe para dentro da área branca da foto ── */
     .content {
       background: #fff;
-      padding: 0 24px 48px;
+      padding: 0 24px 110px;
       margin-top: -160px;
     }
 
@@ -253,6 +253,72 @@
       color: #b8956a;
     }
 
+    /* ── Barra de música ── */
+    .music-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: #1a1a2e;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.45);
+    }
+
+    .mbar-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .mbar-icon {
+      color: #c9a87c;
+      font-size: 22px;
+      flex-shrink: 0;
+      animation: musicBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes musicBounce {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50%       { transform: translateY(-4px) rotate(8deg); }
+    }
+
+    .mbar-title {
+      color: #c9a87c;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .mbar-hint {
+      color: rgba(255,255,255,.5);
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .mbar-player {
+      width: 142px;
+      height: 80px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .mbar-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
     @media (max-width: 480px) {
       .card { box-shadow: none; min-height: 100svh; }
     }
@@ -350,5 +416,25 @@
 
   </div>
 </div>
+
+<!-- Barra de música fixa no rodapé -->
+<div class="music-bar">
+  <div class="mbar-info">
+    <span class="mbar-icon">♫</span>
+    <div>
+      <div class="mbar-title">Nossa Música</div>
+      <div class="mbar-hint">Toque ▶ para ouvir no celular</div>
+    </div>
+  </div>
+  <div class="mbar-player">
+    <iframe
+      src="https://www.youtube.com/embed/QvYSckKSL5g?autoplay=1&loop=1&playlist=QvYSckKSL5g&rel=0&modestbranding=1"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen
+      title="Música – Lidiane e Celio"
+    ></iframe>
+  </div>
+</div>
+
 </body>
 </html>

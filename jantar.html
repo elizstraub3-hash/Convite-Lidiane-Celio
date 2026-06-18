@@ -407,6 +407,7 @@
     }
 
     .mbar-play:active { background: #b8956a; transform: scale(.93); }
+    button.mbar-play { border: none; cursor: pointer; }
 
     @media (max-width: 480px) {
       .card { box-shadow: none; min-height: 100svh; }
@@ -531,21 +532,62 @@
   </div>
 </div>
 
+<!-- Player oculto do YouTube -->
+<div id="yt-player" style="position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;"></div>
+
 <!-- Barra de música fixa no rodapé -->
-<div class="music-bar">
-  <span class="mbar-icon">♫</span>
+<div class="music-bar" id="musicBar">
+  <span class="mbar-icon" id="musicNote">♫</span>
   <div class="mbar-text">
     <div class="mbar-title">Nossa Música</div>
-    <div class="mbar-hint">Toque para ouvir ▶</div>
+    <div class="mbar-hint" id="musicHint">Toque ▶ para ouvir</div>
   </div>
-  <a
-    class="mbar-play"
-    href="https://youtu.be/QvYSckKSL5g"
-    target="_blank"
-    rel="noopener"
-    aria-label="Ouvir música"
-  >▶</a>
+  <button class="mbar-play" id="playBtn" onclick="togglePlay()" aria-label="Tocar / Pausar">▶</button>
 </div>
+
+<script>
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
+})();
+
+var player, ready = false;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('yt-player', {
+    videoId: 'QvYSckKSL5g',
+    playerVars: { autoplay:1, loop:1, playlist:'QvYSckKSL5g', controls:0, rel:0, playsinline:1 },
+    events: {
+      onReady: function(e) { ready = true; e.target.playVideo(); },
+      onStateChange: function(e) {
+        var hint = document.getElementById('musicHint');
+        var btn  = document.getElementById('playBtn');
+        if (e.data === 1) {
+          if (hint) hint.textContent = 'Tocando agora ♫';
+          if (btn)  btn.textContent  = '⏸';
+        } else if (e.data === 2 || e.data === 5) {
+          if (hint) hint.textContent = 'Toque ▶ para ouvir';
+          if (btn)  btn.textContent  = '▶';
+        }
+      },
+      onError: function() {
+        var bar = document.getElementById('musicBar');
+        if (bar) bar.innerHTML =
+          '<span class="mbar-icon">♫</span>'
+          + '<div class="mbar-text"><div class="mbar-title">Nossa Música</div>'
+          + '<div class="mbar-hint">Toque para ouvir</div></div>'
+          + '<a class="mbar-play" href="https://youtu.be/QvYSckKSL5g" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">▶</a>';
+      }
+    }
+  });
+}
+
+function togglePlay() {
+  if (!ready || !player) return;
+  player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
+}
+</script>
 
 </body>
 </html>

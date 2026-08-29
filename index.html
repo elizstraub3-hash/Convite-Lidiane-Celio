@@ -157,6 +157,14 @@
       font-style: italic;
       color: #b0966e;
     }
+
+    /* ── Contagem regressiva ── */
+    .countdown-block { max-width: 480px; width: 100%; text-align: center; }
+    #cdLabel { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #9a9a9a; margin-bottom: 12px; font-weight: 300; display: block; }
+    .countdown-grid { display: flex; justify-content: center; gap: 10px; }
+    .countdown-unit { background: #1a1a2e; border-radius: 6px; padding: 14px 10px 10px; flex: 1; max-width: 88px; }
+    .countdown-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: #c9a87c; line-height: 1; display: block; }
+    .countdown-unit-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 5px; display: block; }
   </style>
 </head>
 <body>
@@ -168,6 +176,16 @@
   <div class="title-block">
     <h1>Lidiane <em>&amp;</em> Celio</h1>
     <p>Selecione seu convite</p>
+  </div>
+
+  <div class="countdown-block">
+    <span id="cdLabel">Faltam para o grande dia</span>
+    <div class="countdown-grid" id="countdownGrid">
+      <div class="countdown-unit"><span class="countdown-num" id="cdDias">00</span><span class="countdown-unit-label">dias</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cdHoras">00</span><span class="countdown-unit-label">horas</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cdMins">00</span><span class="countdown-unit-label">minutos</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cdSegs">00</span><span class="countdown-unit-label">segundos</span></div>
+    </div>
   </div>
 
   <div class="events">
@@ -198,6 +216,34 @@
   </div>
 
   <p class="footer">Com amor, Lidiane &amp; Celio</p>
+
+<script>
+(function(){
+  var cartorio = new Date('2026-07-16T15:50:00');
+  var jantar   = new Date('2026-07-24T19:00:00');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var now = new Date(), target, label;
+    if (now < cartorio) {
+      target = cartorio; label = 'Faltam para a Cerimônia Civil';
+    } else if (now < jantar) {
+      target = jantar; label = 'Faltam para o Jantar de Celebração';
+    } else {
+      document.getElementById('cdLabel').textContent = 'Celebração realizada com muito amor! 💍';
+      var g = document.getElementById('countdownGrid');
+      if (g) g.style.display = 'none';
+      return;
+    }
+    document.getElementById('cdLabel').textContent = label;
+    var diff = Math.max(0, target - now);
+    document.getElementById('cdDias').textContent  = pad(Math.floor(diff/86400000));
+    document.getElementById('cdHoras').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cdMins').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cdSegs').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 
 </body>
 </html>

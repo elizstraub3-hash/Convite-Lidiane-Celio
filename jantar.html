@@ -480,14 +480,23 @@
     @media (max-width: 480px) {
       .card { box-shadow: none; min-height: 100svh; }
     }
+
+    /* ── Contagem regressiva ── */
+    .countdown-box { background: #1a1a2e; border-radius: 8px; padding: 18px 16px; margin-bottom: 20px; text-align: center; }
+    .cd-box-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c9a87c; margin-bottom: 12px; }
+    .cd-row { display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 52px; }
+    .cd-num { font-family: Georgia, serif; font-size: 36px; color: #fff; line-height: 1; }
+    .cd-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: 4px; }
+    .cd-sep { font-size: 28px; color: #c9a87c; line-height: 1; margin-bottom: 14px; }
   </style>
 </head>
 <body>
 <div class="card">
 
-  <!-- Foto do casal – o degradê branco dela flui para o conteúdo abaixo -->
+  <!-- Foto do casal -->
   <div class="hero">
-    <img src="foto-casal.jpg" alt="Lidiane e Celio" width="900" height="1269" loading="eager" decoding="async">
+    <img src="foto-casal.jpg" alt="Lidiane e Celio" loading="eager" decoding="async">
   </div>
 
   <div class="content">
@@ -523,6 +532,20 @@
           <span class="info-label">Data</span>
           <span class="info-value">24 de julho de 2026</span>
         </div>
+      </div>
+    </div>
+
+    <!-- Contagem regressiva -->
+    <div class="countdown-box">
+      <div class="cd-box-label" id="cdLabel">Faltam para o jantar</div>
+      <div class="cd-row" id="cdRow">
+        <div class="cd-unit"><span class="cd-num" id="cdDias">00</span><span class="cd-lbl">dias</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cdHoras">00</span><span class="cd-lbl">horas</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-lbl">min</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cdSegs">00</span><span class="cd-lbl">seg</span></div>
       </div>
     </div>
 
@@ -634,7 +657,6 @@
 </div>
 
 <script>
-/* ── Corações flutuantes ── */
 (function(){
   var cores = ['#ff9ebc','#ffb3c1','#ff6fa3','#e8a0bf','#ffd6e0','#c9a87c','#ff85a1'];
   function spawn() {
@@ -695,6 +717,28 @@ function togglePlay() {
   if (!ready || !player) return;
   player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
 }
+</script>
+
+<script>
+(function(){
+  var target = new Date('2026-07-24T19:00:00');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var now = new Date();
+    if (now >= target) {
+      document.getElementById('cdLabel').textContent = 'Hoje é o grande dia! 🥂';
+      var r = document.getElementById('cdRow');
+      if (r) r.style.display = 'none';
+      return;
+    }
+    var diff = target - now;
+    document.getElementById('cdDias').textContent  = pad(Math.floor(diff/86400000));
+    document.getElementById('cdHoras').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cdMins').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cdSegs').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
 </script>
 
 </body>
